@@ -1,17 +1,43 @@
-# Mini code editor
+# OpenSCAD Editor
 
-A non-trivial sample with basic features of a code editor, like syntax detection and syntax highlight. If also uses the extended FileSystem API that allows a user to select files from the disk so the app can read and write to that file.
+A sample OpenSCAD editor with the basic features of a code editor, like syntax highlighting and autocompletion.
 
-**This demo requires node-webkit >= v0.3.0** 
+
+# Features
+
+* Available on Linux, Mac OSX and Windows
+* Syntax highlighting
+* Code folding
+* Find & Replace
+* Autocomplete
+
+NOTE:
+  Currently I do not have autocomplete working and the syntax highlighting is kind of wonky. But the editor does work.
+
+**This editor requires node-webkit >= v0.3.0** 
 
 ## Screen shot
 
-![screenshot](http://ww3.sinaimg.cn/large/6556d357tw1dxtz5nih7oj.jpg)
+![screenshot](https://raw.github.com/iceblu3710/OpenSCAD_Editor/master/img/editor.jpg)
+![screenshot](https://raw.github.com/iceblu3710/OpenSCAD_Editor/master/img/example.jpg)
 
-## APIs
+# Quick Start
 
-* [Window](https://github.com/rogerwang/node-webkit/wiki/Window)
-* [Menu](https://github.com/rogerwang/node-webkit/wiki/Menu)
-* [MenuItem](https://github.com/rogerwang/node-webkit/wiki/MenuItem)
-* [Clipboard](https://github.com/rogerwang/node-webkit/wiki/Clipboard)
-* [fs module](http://nodejs.org/api/fs.html)
+Download node-webkit from one of the links below:
+
+Prebuilt binaries (v0.4.0 — Jan 18, 2013):
+* Linux: [32bit](https://s3.amazonaws.com/node-webkit/v0.4.0/node-webkit-v0.4.0-linux-ia32.tar.gz) / [64bit](https://s3.amazonaws.com/node-webkit/v0.4.0/node-webkit-v0.4.0-linux-x64.tar.gz)
+* Windows: [win32](https://s3.amazonaws.com/node-webkit/v0.4.0/node-webkit-v0.4.0-win-ia32.zip)
+* Mac: [32bit, 10.7+](https://s3.amazonaws.com/node-webkit/v0.4.0/node-webkit-v0.4.0-osx-ia32.zip)
+
+Open/Install OpenSCAD and in the menu select "View->Hide Editor" and "Design->Automatic Reload and Compile"
+
+unzip the node-webkit binary and cut/copy the "nw.exe" & "nw.pak" files into the OpenSCAD editor folder
+
+Run nw.exe and open a .scad file in both the editor and in OpenSCAD itself
+
+Whenever you make changed in the editor press 'F5' or 'Ctrl-S' and OpenSCAD will render the changes
+
+# License
+
+`node-webkit`'s code uses the MIT license, see their `[LICENSE](https://github.com/rogerwang/node-webkit/blob/master/LICENSE)` file.
