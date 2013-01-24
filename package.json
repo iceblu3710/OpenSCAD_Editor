@@ -1,0 +1,13 @@
+{
+  "name": "openscad_editor",
+  "version": "0.0.1",
+  "description": "A simple code editor for OpenSCAD with syntax highliging and autocomplete.",
+  "main": "main.html",
+  "window": {
+    "width": 800,
+    "height": 800,
+    "show": false,
+    "title": "OpenSCAD Code Editor",
+    "toolbar": false
+  }
+}
