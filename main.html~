@@ -9,7 +9,11 @@
 <link rel="stylesheet" href="cm/lib/codemirror.css">
 <link rel="stylesheet" href="cm/theme/lesser-dark.css">
 
-
+<script src="cm/lib/util/searchcursor.js"></script>
+<script src="cm/lib/util/collapserange.js"></script>
+<script src="cm/lib/util/match-highlighter.js"></script>
+<script src="cm/lib/util/formatting.js"></script>
+<script src="cm/lib/util/show-hint.js"></script>
 
 <script src="cm/mode/openscad/openscad.js"></script>
 <link rel="stylesheet" href="style.css">

@@ -9,12 +9,11 @@ var fs = require("fs");
 var clipboard = gui.Clipboard.get();
 
 function handleDocumentChange(title) {
-  var mode = "openscad";
-  var modeName = "OpenSCAD";
+  var mode;
+  var modeName;
   if (title) {
     title = title.match(/[^/]+$/)[0];
     document.getElementById("title").innerHTML = title;
-    document.title = title;
     if (title.match(/.scad$/)) {
       mode = "openscad";
       modeName = "OpenSCAD";
@@ -116,8 +115,7 @@ function initContextMenu() {
     }
   }));
 
-  document.getElementById("editor").addEventListener('contextmenu',
-                                                     function(ev) { 
+  document.getElementById("editor").addEventListener('contextmenu', function(ev) { 
     ev.preventDefault();
     menu.popup(ev.x, ev.y);
     return false;
@@ -142,20 +140,25 @@ onload = function() {
   $("#openFile").change(function(evt) {
     onChosenFileToOpen($(this).val());
   });
-
-  editor = CodeMirror(
-    document.getElementById("editor"),
-    {
-      mode: {name: "javascript", json: true },
+  
+  CodeMirror.commands.autocomplete = function(cm) {
+    CodeMirror.simpleHint(cm, CodeMirror.javascriptHint);
+  }
+      
+  editor = CodeMirror(document.getElementById("editor"), {
+      mode: "openscad",
       lineNumbers: true,
+      lineWrapping: true,
+      collapseRange: true,
       theme: "lesser-dark",
       extraKeys: {
         "Cmd-S": function(instance) { handleSaveButton() },
         "Ctrl-S": function(instance) { handleSaveButton() },
         "F5": function(instance) { handleSaveButton() },
+        "Ctrl-Space": "autocomplete",
       }
     });
-
+  
   newFile();
   onresize();
 
