@@ -23,11 +23,10 @@ NOTE:
 
 # Quick Start
 
-* Download node-webkit from one of the links below:
-Prebuilt binaries (v0.4.0 — Jan 18, 2013):
-Linux: [32bit](https://s3.amazonaws.com/node-webkit/v0.4.0/node-webkit-v0.4.0-linux-ia32.tar.gz) / [64bit](https://s3.amazonaws.com/node-webkit/v0.4.0/node-webkit-v0.4.0-linux-x64.tar.gz)
-Windows: [win32](https://s3.amazonaws.com/node-webkit/v0.4.0/node-webkit-v0.4.0-win-ia32.zip)
-Mac: [32bit, 10.7+](https://s3.amazonaws.com/node-webkit/v0.4.0/node-webkit-v0.4.0-osx-ia32.zip)
+* Download one of the node-webkit prebuilt binaries (v0.4.0 — Jan 18, 2013):
+* Linux: [32bit](https://s3.amazonaws.com/node-webkit/v0.4.0/node-webkit-v0.4.0-linux-ia32.tar.gz) / [64bit](https://s3.amazonaws.com/node-webkit/v0.4.0/node-webkit-v0.4.0-linux-x64.tar.gz)
+* Windows: [win32](https://s3.amazonaws.com/node-webkit/v0.4.0/node-webkit-v0.4.0-win-ia32.zip)
+* Mac: [32bit, 10.7+](https://s3.amazonaws.com/node-webkit/v0.4.0/node-webkit-v0.4.0-osx-ia32.zip)
 
 * Open/Install OpenSCAD and in the menu select `View -> Hide Editor` and `Design -> Automatic Reload and Compile`
 
