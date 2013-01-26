@@ -12,12 +12,29 @@ button {
 .CodeMirror {
   margin: 0;
   padding: 0;
+  height: auto;
 }
 
 .CodeMirror-scroll {
   height: auto;
   overflow-y: hidden;
   overflow-x: auto;
+}
+
+.CodeMirror-collapserange {
+  width: .6em;
+}
+
+span.CodeMirror-matchhighlight {
+  background: #45443b
+}
+
+.CodeMirror-focused span.CodeMirror-matchhighlight {
+  background: #45443b; !important
+}
+
+.CodeMirror-matchingbracket {
+  background: #45443b;
 }
 
 #editor {

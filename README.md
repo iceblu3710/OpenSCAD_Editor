@@ -6,13 +6,11 @@ A sample OpenSCAD editor with the basic features of a code editor, like syntax h
 # Features
 
 * Available on Linux, Mac OSX and Windows
-* Syntax highlighting
+* Autoformatting, Block Comment/Uncomment
 * Code folding
-* Find & Replace
-* Autocomplete
-
-NOTE:
-  Currently I do not have autocomplete working and the syntax highlighting is kind of wonky. But the editor does work.
+* Syntax highlighting (In progress)
+* Find & Replace (In progress)
+* Autocomplete (Implementation only)
 
 **This editor requires node-webkit >= v0.3.0** 
 

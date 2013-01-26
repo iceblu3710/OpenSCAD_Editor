@@ -17,6 +17,9 @@ function handleDocumentChange(title) {
     if (title.match(/.scad$/)) {
       mode = "openscad";
       modeName = "OpenSCAD";
+    } else if (title.match(/.js$/)) {
+      mode = "javascript";
+      modeName = "JavaScript";
     }
   } else {
     document.getElementById("title").innerHTML = "[no file loaded]";
@@ -93,6 +96,27 @@ function handleSaveButton() {
   }
 }
 
+function getSelectedRange() {
+  return { from: editor.getCursor(true), to: editor.getCursor(false) };
+}
+      
+function handleAutoformatButton() {
+  var range = getSelectedRange();
+  editor.autoFormatRange(range.from, range.to);
+}
+
+function handleCommentButton() {
+  var range = getSelectedRange(), selStart = editor.getCursor("start");
+  editor.commentRange(true, range.from, range.to);
+  editor.setSelection(selStart, editor.getCursor("end"));
+}
+
+function handleUncommentButton() {
+  var range = getSelectedRange(), selStart = editor.getCursor("start");
+  editor.commentRange(false, range.from, range.to);
+  editor.setSelection(selStart, editor.getCursor("end"));
+}
+
 function initContextMenu() {
   menu = new gui.Menu();
   menu.append(new gui.MenuItem({
@@ -129,10 +153,16 @@ onload = function() {
   newButton = document.getElementById("new");
   openButton = document.getElementById("open");
   saveButton = document.getElementById("save");
+  autoformatButton = document.getElementById("autoformat");
+  commentButton = document.getElementById("comment");
+  uncommentButton = document.getElementById("uncomment");
 
   newButton.addEventListener("click", handleNewButton);
   openButton.addEventListener("click", handleOpenButton);
   saveButton.addEventListener("click", handleSaveButton);
+  autoformatButton.addEventListener("click", handleAutoformatButton);
+  commentButton.addEventListener("click", handleCommentButton);
+  uncommentButton.addEventListener("click", handleUncommentButton);
 
   $("#saveFile").change(function(evt) {
     onChosenFileToSave($(this).val());
@@ -140,30 +170,37 @@ onload = function() {
   $("#openFile").change(function(evt) {
     onChosenFileToOpen($(this).val());
   });
+        
+  editor = CodeMirror(document.getElementById("editor"), {
+    fixedGutter: false,
+    mode: "javascript",
+    lineNumbers: true,
+    lineWrapping: true,
+    tabSize: 2,
+    collapseRange: true,
+    matchBrackets: true,
+    theme: "lesser-dark",
+    extraKeys: {
+      "Cmd-S": function(instance) { handleSaveButton() },
+      "Ctrl-S": function(instance) { handleSaveButton() },
+      "F5": function(instance) { handleSaveButton() },
+      "Ctrl-Space": "autocomplete",
+  }
+    });
+    
+  editor.on("cursorActivity", function() {
+    editor.matchHighlight("CodeMirror-matchhighlight");
+  });
   
   CodeMirror.commands.autocomplete = function(cm) {
-    CodeMirror.simpleHint(cm, CodeMirror.javascriptHint);
+    CodeMirror.showHint(cm, CodeMirror.javascriptHint);
   }
-      
-  editor = CodeMirror(document.getElementById("editor"), {
-      mode: "openscad",
-      lineNumbers: true,
-      lineWrapping: true,
-      collapseRange: true,
-      theme: "lesser-dark",
-      extraKeys: {
-        "Cmd-S": function(instance) { handleSaveButton() },
-        "Ctrl-S": function(instance) { handleSaveButton() },
-        "F5": function(instance) { handleSaveButton() },
-        "Ctrl-Space": "autocomplete"
-      }
-    });
   
   newFile();
   onresize();
 
   gui.Window.get().show();
-};
+}
 
 onresize = function() {
   var container = document.getElementById('editor');

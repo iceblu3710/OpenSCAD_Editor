@@ -2,29 +2,36 @@
 <head>
 <title>OpenSCAD Code Editor - F5 To Render</title>
 
-<script src="zepto.min.js"></script>
-<script src="editor.js"></script>
+<script src="./cm/lib/codemirror.js"></script>
+<link rel="stylesheet" href="./cm/lib/codemirror.css">
+<link rel="stylesheet" href="./cm/theme/lesser-dark.css">
 
-<script src="cm/lib/codemirror.js"></script>
-<link rel="stylesheet" href="cm/lib/codemirror.css">
-<link rel="stylesheet" href="cm/theme/lesser-dark.css">
+<script src="./cm/addon/edit/matchbrackets.js"></script>
+<script src="./cm/addon/fold/collapserange.js"></script>
+<script src="./cm/addon/search/searchcursor.js"></script>
+<script src="./cm/addon/search/match-highlighter.js"></script>
+<script src="./cm/addon/format/formatting.js"></script>
 
-<script src="cm/lib/util/searchcursor.js"></script>
-<script src="cm/lib/util/collapserange.js"></script>
-<script src="cm/lib/util/match-highlighter.js"></script>
-<script src="cm/lib/util/formatting.js"></script>
-<script src="cm/lib/util/simple-hint.js"></script>
-<link rel="stylesheet" href="cm/lib/util/simple-hint.css">
+<script src="./cm/addon/hint/show-hint.js"></script>
+<script src="./cm/addon/hint/javascript-hint.js"></script>
+<link rel="stylesheet" href="./cm/addon/hint/show-hint.css">
 
-<script src="cm/mode/openscad/openscad.js"></script>
-<link rel="stylesheet" href="style.css">
+<script src="./cm/mode/openscad/openscad.js"></script>
+<script src="./cm/mode/javascript/javascript.js"></script>
+<link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
 <div class="buttons">
-	<button id="new"> <img src="img/16x16/file_add.png"/>New  </button>
-	<button id="open"><img src="img/16x16/file.png"/>    Open </button>
-	<button id="save"><img src="img/16x16/diskette.png"/>Save </button>
+	<button id="new"> <img src="./img/16x16/file_add.png"/>New  </button>
+	<button id="open"><img src="./img/16x16/file.png"/>    Open </button>
+	<button id="save"><img src="./img/16x16/diskette.png"/>Save </button>
+	<button id="undo">Undo  </button>
+	<button id="redo">   Redo </button>
+	<button id="seach"> Search </button>	
+	<button id="autoformat">Autoformat  </button>
+	<button id="comment">   Comment </button>
+	<button id="uncomment"> Uncomment </button>
 </div>
 
 <div id="editor"></div>
@@ -36,5 +43,9 @@
 
 <input style="display:none;" id="openFile" type="file" />
 <input style="display:none;" id="saveFile" type="file" nwsaveas />
+
+<script src="./zepto.min.js"></script>
+<script src="./editor.js"></script>
+
 </body>
 </html>
